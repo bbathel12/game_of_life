@@ -1,0 +1,74 @@
+<script src="./cell.js"></script>
+<script src="./board.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<canvas height=1000 width=1000 id="canvas" style="border:1px solid #000000;"></canvas>
+<ul style="display: inline-block;
+    vertical-align: top;
+    list-style-type: none">
+    <li id="play">Play</li>
+    <li id="stop">Stop</li>
+</ul>
+<script>
+	var cells = 50;
+	var game = new game(cells,cells);
+	game.init();
+	var game_board = game.getBoard();
+	game_board[0][1].current_state = true;
+	game_board[1][2].current_state = true;
+	game_board[2][0].current_state = true;
+	game_board[2][1].current_state = true;
+	game_board[2][2].current_state = true;
+
+	game_board[0][1].past_state = true;
+	game_board[1][2].past_state = true;
+	game_board[2][0].past_state = true;
+	game_board[2][1].past_state = true;
+	game_board[2][2].past_state = true;
+	
+    game_board[49][1].current_state = true;
+	game_board[48][2].current_state = true;
+	game_board[47][0].current_state = true;
+	game_board[47][1].current_state = true;
+	game_board[47][2].current_state = true;
+
+	game_board[49][1].past_state = true;
+	game_board[48][2].past_state = true;
+	game_board[47][0].past_state = true;
+	game_board[47][1].past_state = true;
+	game_board[47][2].past_state = true;
+	
+	// game_board[0][48].current_state = true;
+ //    game_board[1][47].current_state = true;
+ //    game_board[2][47].current_state = true;
+ //    game_board[2][48].current_state = true;
+ //    game_board[2][49].current_state = true;
+
+ //    game_board[0][48].past_state = true;
+ //    game_board[1][47].past_state = true;
+ //    game_board[2][47].past_state = true;
+ //    game_board[2][48].past_state = true;
+ //    game_board[2][49].past_state = true;
+
+ //    game_board[49][48].current_state = true;
+ //    game_board[48][47].current_state = true;
+ //    game_board[47][47].current_state = true;
+ //    game_board[47][48].current_state = true;
+ //    game_board[47][49].current_state = true;
+
+ //    game_board[49][48].past_state = true;
+ //    game_board[48][47].past_state = true;
+ //    game_board[47][47].past_state = true;
+ //    game_board[47][48].past_state = true;
+ //    game_board[47][49].past_state = true;
+	
+	for(var i = 0; i < cells ; i++){
+		for(var j = 0; j < cells; j++){
+			game_board[i][j].draw();
+		}
+	}
+
+
+	setInterval(game.run_turn , 50);
+	
+
+</script>
